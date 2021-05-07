@@ -1,0 +1,45 @@
+package com.company;
+import java.util.Scanner;
+import java.util.Random;
+
+class game{
+    int num,input,count;
+    int takeinput(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Guess the number:");
+        input = sc.nextInt();
+        return input;
+    }
+    int random(){
+        Random r = new Random();
+        this.num = r.nextInt(100);
+        return this.num;
+    }
+    boolean game(int num,int input){
+        count++;
+        if(num==input){
+            System.out.printf("\nYou guessed it right in %d attempts",count);
+            return true;
+        }
+        else if(num<input){
+            System.out.println("Too high...");
+        }
+        else if(num>input){
+            System.out.println("Too low...");
+        }
+        return false;
+    }
+}
+
+public class guess_the_num {
+
+    public static void main(String[] args) {
+        game g = new game();
+        int r=g.random();
+        boolean b=false;
+        while (b==false) {
+            int k=g.takeinput();
+            b=g.game(r,k);
+        }
+    }
+}
